@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Chocolate Classical Sans";
+  src: url("/fonts/ChocolateClassicalSans.woff2") format("woff2"), url("/fonts/ChocolateClassicalSans.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: 240 50% 98%;
+  --foreground: 240 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 47% 11%;
+  --primary: 240 83% 53%;
+  --primary-foreground: 240 40% 98%;
+  --secondary: 240 40% 96%;
+  --secondary-foreground: 240 47% 11%;
+  --accent: 240 40% 96%;
+  --accent-foreground: 240 47% 11%;
+  --muted: 240 40% 96%;
+  --muted-foreground: 240 16% 47%;
+  --border: 240 32% 91%;
+  --input: 240 32% 91%;
+  --ring: 240 83% 53%;
+  --radius: 0.5rem;
+  --foreground-rgb: 15, 23, 42;
+  --background-rgb: 255, 255, 255;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  .chinese-text {
+    font-family: "Chocolate Classical Sans", "Noto Sans TC", sans-serif;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300 border-4 border-blue-900 shadow-custom;
+  }
+
+  .btn-secondary {
+    @apply bg-blue-100 hover:bg-blue-200 text-blue-900 font-bold py-2 px-4 rounded-lg transition-colors duration-300 border-4 border-blue-900 shadow-custom;
+  }
+
+  .feature-icon {
+    @apply flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-4 border-4 border-blue-900;
+  }
+
+  .learn-more {
+    @apply inline-flex items-center text-blue-600 font-medium hover:text-blue-800;
+  }
+
+  .learn-more svg {
+    @apply ml-1 w-4 h-4;
+  }
+
+  .content-card {
+    @apply bg-white rounded-xl shadow-sm p-6 h-full border-4 border-blue-900 shadow-custom;
+  }
+
+  .neubrutalism-card {
+    @apply bg-white border-4 border-blue-900 rounded-lg shadow-custom transition-all duration-300;
+  }
+
+  .neubrutalism-card:hover {
+    @apply shadow-custom-hover -translate-x-1 -translate-y-1;
+  }
+
+  .neubrutalism-input {
+    @apply bg-white border-4 border-blue-900 rounded-lg px-4 py-2 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300;
+  }
+
+  .neubrutalism-button {
+    @apply bg-blue-700 text-white font-bold py-2 px-4 rounded-lg border-4 border-blue-900 shadow-custom transition-all duration-300;
+  }
+
+  .neubrutalism-button:hover {
+    @apply shadow-custom-hover -translate-x-1 -translate-y-1;
+  }
+}
+
+@layer utilities {
+  .shadow-custom {
+    box-shadow: 4px 4px 0 0 rgba(30, 27, 112, 1);
+  }
+
+  .shadow-custom-hover {
+    box-shadow: 8px 8px 0 0 rgba(30, 27, 112, 1);
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  overflow-x: hidden;
+}
+
+.feature-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at var(--mouse-x, 0) var(--mouse-y, 0),
+    rgba(59, 130, 246, 0.1) 0%,
+    transparent 80%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 6px;
+  border: 3px solid #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .shadow-custom {
+    box-shadow: 3px 3px 0 0 rgba(30, 27, 112, 1);
+  }
+  .shadow-custom-hover {
+    box-shadow: 6px 6px 0 0 rgba(30, 27, 112, 1);
+  }
+}
+
